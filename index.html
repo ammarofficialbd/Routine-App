@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Routine App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 12px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Routine App</h2>
+
+  <table id="routineTable">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Task</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows will be dynamically added using JavaScript -->
+    </tbody>
+  </table>
+
+  <div>
+    <label for="taskTime">Task Time:</label>
+    <input type="text" id="taskTime" placeholder="Enter time (e.g., 08:00)">
+    <label for="taskName">Task Name:</label>
+    <input type="text" id="taskName" placeholder="Enter task name">
+    <button onclick="addTask()">Add Task</button>
+  </div>
+
+  <script>
+    function addTask() {
+      var timeInput = document.getElementById("taskTime");
+      var taskInput = document.getElementById("taskName");
+      var tableBody = document.querySelector("#routineTable tbody");
+
+      var time = timeInput.value.trim();
+      var task = taskInput.value.trim();
+
+      if (time && task) {
+        var newRow = "<tr><td>" + time + "</td><td>" + task + "</td></tr>";
+        tableBody.innerHTML += newRow;
+
+        // Clear input fields after adding a task
+        timeInput.value = "";
+        taskInput.value = "";
+      } else {
+        alert("Please enter both time and task.");
+      }
+    }
+  </script>
+
+</body>
+</html>
